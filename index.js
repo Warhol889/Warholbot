@@ -32,9 +32,6 @@ client.on("message", async(message) => {
        case 'stop' :
            stop(message, serverQueue);
            break;
-        case 'skip' :
-            skip(message, serverQueue);
-           break;
    }
    
     async function execute(message, serverQueue){
