@@ -1,7 +1,6 @@
 {
   "name": "bot",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +13,16 @@
     "opusscript": "0.0.7",
     "ytdl-core": "^4.2.1",
     "ytsearcher": "^1.2.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Warhol889/Warholbot.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Warhol889/Warholbot/issues"
+  },
+  "homepage": "https://github.com/Warhol889/Warholbot#readme",
+  "description": ""
 }
