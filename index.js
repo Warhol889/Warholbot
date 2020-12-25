@@ -32,6 +32,9 @@ client.on("message", async(message) => {
        case 'stop' :
            stop(message, serverQueue);
            break;
+       case 'skip' :
+            skip(message, serverQueue);
+           break;
    }
    
     async function execute(message, serverQueue){
@@ -70,8 +73,8 @@ client.on("message", async(message) => {
                     return message.channel.send(`ไม่สามารถเข้าห้องพูดคุยได้ ${err}`)
                 }
             }else{
-                serverQueue.push.songs.push(song);
-                return message.channel.send(`เพลงถูกเพิ่มในคิว ${song.url}`);
+                serverQueue.songs.push(song);
+                return message.channel.send(`เพลงถูกเพิ่ม ${song.url}`);
             }
         }
     }
@@ -87,19 +90,18 @@ client.on("message", async(message) => {
              .on('finish', () =>{
                  serverQueue.songs.shift();
                  play(guild, serverQueue.songs[0]);
-                 serverQueue.txtChannel.send(`กำลังเล่น ${serverQueue.songs[0].url}`)
              })
+             serverQueue.txtChannel.send(`กำลังเล่น ${serverQueue.songs[0].url}`)
     }
     function stop (message, serverQueue){
         if(message.member.voice.channel)
-            if(!message.member.voice.channel)
                 return message.channel.send("คุณต้องเข้าห้องพูดคุยก่อน")
             serverQueue.songs = [];
             serverQueue.connection.dispatcher.end();
         }
     function skip (message, serverQueue){
             if(message.member.voice.channel)
-               return message.channel.send("คุณต้องเข้าห้องพูดคุยก่อน")
+               return message.channel.send("คุณต้องเข้าห้องพูดคุยก่อน");
             if(!serverQueue)
                return message.channel.send("ไม่มีวีดีโอให้สคิป");
             serverQueue.connection.dispatcher.end();
