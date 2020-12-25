@@ -29,10 +29,10 @@ client.on("message", async(message) => {
        case 'play':
            execute(message, serverQueue);
            break;
-       case 'stop' :
+       case 'stop':
            stop(message, serverQueue);
            break;
-       case 'skip' :
+       case 'skip':
             skip(message, serverQueue);
            break;
    }
@@ -94,13 +94,13 @@ client.on("message", async(message) => {
              serverQueue.txtChannel.send(`กำลังเล่น ${serverQueue.songs[0].url}`)
     }
     function stop (message, serverQueue){
-        if(message.member.voice.channel)
+        if(!message.member.voice.channel)
                 return message.channel.send("คุณต้องเข้าห้องพูดคุยก่อน")
             serverQueue.songs = [];
             serverQueue.connection.dispatcher.end();
         }
     function skip (message, serverQueue){
-            if(message.member.voice.channel)
+            if(!message.member.voice.channel)
                return message.channel.send("คุณต้องเข้าห้องพูดคุยก่อน");
             if(!serverQueue)
                return message.channel.send("ไม่มีวีดีโอให้สคิป");
